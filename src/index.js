@@ -19,6 +19,7 @@ class TelegramEmbed extends Component {
 
     this.state = {
       src: this.props.src,
+      dark: this.props.dark,
       id: '',
       height: '80px'
     }
@@ -70,14 +71,15 @@ class TelegramEmbed extends Component {
   }
 
   render () {
-    const { src, height } = this.state
+    const { dark, src, height } = this.state
     const { container } = this.props
+    console.log("telegram embed render")
 
     return (
       <div data-sharing-id={container}>
         <iframe
           ref={node => this.iFrame = node}
-          src={src + '?embed=1'}
+          src={src + '?embed=1&dark=' + dark}
           height={height}
           id={'telegram-post' + this.urlObj.pathname.replace(/[^a-z0-9_]/ig, '-')}
           style={styles}
